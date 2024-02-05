@@ -96,7 +96,7 @@ func RefreshCache(wf *aw.Workflow, name string, maxAge time.Duration) error {
         }
 
         var cache []interface{}
-        err := LoadCache(wf, name, cache)
+        err := LoadCache(wf, name, &cache)
         if err != nil {
             return err
         }
