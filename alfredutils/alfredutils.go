@@ -18,9 +18,9 @@ type magicAuth struct {
 func (a magicAuth) Keyword() string     { return "clearauth" }
 func (a magicAuth) Description() string { return "Clear credentials." }
 func (a magicAuth) RunText() string     { return "Credentials cleared!" }
-func (a magicAuth) Run() error          { return clearAuth(a.Workflow, a.Account) }
+func (a magicAuth) Run() error          { return ClearAuth(a.Workflow, a.Account) }
 
-func clearAuth(wf *aw.Workflow, keychainAccount string) error {
+func ClearAuth(wf *aw.Workflow, keychainAccount string) error {
     if err := wf.Keychain.Delete(keychainAccount); err != nil {
         return err
     }
