@@ -82,12 +82,12 @@ func LoadCache(wf *aw.Workflow, name string, out interface{}) error {
     return nil
 }
 
-func RefreshCache(wf *aw.Workflow, name string, maxAge time.Duration) error {
+func RefreshCache(wf *aw.Workflow, name string, maxAge time.Duration, cmdArgs string) error {
     cacheJobName := "cache"
     if wf.Cache.Expired(name, maxAge) {
         wf.Rerun(2)
         if !wf.IsRunning(cacheJobName) {
-            cmd := exec.Command(os.Args[0], cacheJobName)
+            cmd := exec.Command(os.Args[0], cmdArgs)
             if err := wf.RunInBackground(cacheJobName, cmd); err != nil {
                 return err
             }
