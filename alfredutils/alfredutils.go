@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 	"os/exec"
-	"strings"
 	"time"
 
 	aw "github.com/deanishe/awgo"
